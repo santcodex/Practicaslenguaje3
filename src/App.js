@@ -131,6 +131,51 @@ const Landing = () => {
             empresa de desarrollo de software Buffer Ring
           </p>
         </section>
+        <section className="section" aria-labelledby="contact-title">
+          <h3 id="contact-title">Contáctame</h3>
+          <form
+            className="contact-form"
+            action="https://formsubmit.co/johanrjosue@gmail.com"
+            method="POST"
+            target="_blank"
+          >
+            {/* Opcionales para personalizar el envío */}
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nuevo mensaje desde tu portafolio"
+            />
+            <input type="hidden" name="_template" value="table" />
+
+            {/* Campos visibles */}
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre"
+              required
+              className="contact-input"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Tu correo"
+              required
+              className="contact-input"
+            />
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Tu mensaje"
+              required
+              className="contact-textarea"
+            ></textarea>
+
+            <button type="submit" className="btn btn-primary contact-btn">
+              Enviar mensaje
+            </button>
+          </form>
+        </section>
       </main>
     </div>
   );
