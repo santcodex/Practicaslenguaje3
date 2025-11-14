@@ -1,5 +1,21 @@
 import React from "react";
 import "./LandingStudent.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from "./Landing";
+import TechNews from "./components/TechNews";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/tech-news" element={<TechNews />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
 
 const Landing = () => {
   // Datos
