@@ -66,6 +66,14 @@ const Landing = () => {
         </div>
 
         <div className="actions" style={{ marginTop: 18 }}>
+        <a
+  className="btn btn-secondary"
+  href="/tech-news"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Ver noticias de tecnología
+</a>
           <a
             className="btn btn-primary"
             href={profile.github}
