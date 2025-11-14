@@ -27,26 +27,27 @@ const Landing = () => {
     ],
   };
 
-  // Estado para noticias
-  const [showNews, setShowNews] = useState(false);
-  const [articles, setArticles] = useState([]);
+  // Estado para videos de YouTube
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    if (showNews && articles.length === 0) {
-      const fetchNews = async () => {
-        try {
-          const res = await fetch(
-            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=5cd6a2ccd7294d5fbe924e9ce00fa6ee`
-          );
-          const data = await res.json();
-          setArticles(data.articles || []);
-        } catch (error) {
-          console.error("Error al cargar noticias:", error);
-        }
-      };
-      fetchNews();
-    }
-  }, [showNews]);
+    const fetchYoutubePlaylist = async () => {
+      const playlistId = "TU_PLAYLIST_ID"; // Reemplaza con tu ID de playlist
+      const apiKey = "TU_API_KEY"; // Reemplaza con tu clave de API
+
+      try {
+        const res = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=6&playlistId=${playlistId}&key=${apiKey}`
+        );
+        const data = await res.json();
+        setVideos(data.items || []);
+      } catch (error) {
+        console.error("Error al cargar videos de YouTube:", error);
+      }
+    };
+
+    fetchYoutubePlaylist();
+  }, []);
 
   return (
     <div className="container">
@@ -74,9 +75,6 @@ const Landing = () => {
           </div>
         </div>
         <div className="actions" style={{ marginTop: 18 }}>
-          <button className="btn btn-secondary" onClick={() => setShowNews(!showNews)}>
-            {showNews ? "Ocultar noticias" : "Ver noticias de tecnología"}
-          </button>
           <a className="btn btn-primary" href={profile.github} target="_blank" rel="noopener noreferrer">Ver GitHub</a>
           <a className="btn btn-ghost" href={profile.github2} target="_blank" rel="noopener noreferrer">Ver GitHub (Buffer Ring)</a>
         </div>
@@ -119,40 +117,37 @@ const Landing = () => {
           </p>
         </section>
 
-        <section className="section" aria-labelledby="contact-title">
-          <h3 id="contact-title">Contáctame</h3>
-          <form className="contact-form" action="https://formsubmit.co/johanrjosue@gmail.com" method="POST" target="_blank">
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde tu portafolio" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="text" name="name" placeholder="Tu nombre" required className="contact-input" />
-            <input type="email" name="email" placeholder="Tu correo" required className="contact-input" />
-            <textarea name="message" rows="5" placeholder="Tu mensaje" required className="contact-textarea"></textarea>
-            <button type="submit" className="btn btn-primary contact-btn">Enviar mensaje</button>
-          </form>
+        <section className="section" aria-labelledby="youtube-title">
+          <h3 id="youtube-title">🎵 Mis canciones favoritas en YouTube</h3>
+          <ul className="youtube-list">
+            {videos.map((video, index) => (
+              <li key={index} className="youtube-item">
+                <a
+                  href={`https://www.youtube.com/watch?v=${video.snippet.resourceId.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={video.snippet.thumbnails.medium.url}
+                    alt={video.snippet.title}
+                    width="100%"
+                    style={{ borderRadius: "8px" }}
+                  />
+                  <p style={{ marginTop: "8px", fontWeight: "600" }}>
+                    {video.snippet.title}
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
-
-        {showNews && (
-          <section className="section" aria-labelledby="news-title">
-            <h3 id="news-title">Últimas noticias de tecnología</h3>
-            <ul className="news-list">
-              {articles.map((article, index) => (
-                <li key={index} className="news-item">
-                  <a href={article.url} target="_blank" rel="noopener noreferrer">
-                    <strong>{article.title}</strong>
-                  </a>
-                  <p>{article.description}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </main>
     </div>
   );
 };
 
 export default Landing;
+
 
 
 
