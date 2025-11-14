@@ -15,8 +15,6 @@ function App() {
   );
 }
 
-export default App;
-
 const Landingpage = () => {
   // Datos
   const profile = {
@@ -205,5 +203,6 @@ const Landingpage = () => {
   );
 };
 
-export const Landing = () => { ... }; // Exportación nombrada
+export default App;
+
 
