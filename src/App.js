@@ -31,13 +31,12 @@ const Landing = () => {
   const [showNews, setShowNews] = useState(false);
   const [articles, setArticles] = useState([]);
 
-  // Cargar noticias al activar
   useEffect(() => {
-    if (showNews) {
+    if (showNews && articles.length === 0) {
       const fetchNews = async () => {
         try {
           const res = await fetch(
-            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=5cd6a2ccd7294d5fbe924e9ce00fa6ee`
+            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=TU_API_KEY`
           );
           const data = await res.json();
           setArticles(data.articles || []);
@@ -56,12 +55,10 @@ const Landing = () => {
         <figure className="avatar">
           <img src={profile.avatar} alt={`${profile.nombre} foto`} />
         </figure>
-
         <div className="name" aria-label="Nombre">{profile.nombre}</div>
         <div className="meta">
           <div><strong>Edad:</strong> {profile.edad}</div>
         </div>
-
         <div className="contact-list" aria-label="Contacto">
           <div className="contact-item">
             <strong>GitHub personal</strong>
@@ -76,7 +73,6 @@ const Landing = () => {
             <span>{profile.email}</span>
           </div>
         </div>
-
         <div className="actions" style={{ marginTop: 18 }}>
           <button className="btn btn-secondary" onClick={() => setShowNews(!showNews)}>
             {showNews ? "Ocultar noticias" : "Ver noticias de tecnología"}
@@ -157,6 +153,7 @@ const Landing = () => {
 };
 
 export default Landing;
+
 
 
 
