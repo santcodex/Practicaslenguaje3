@@ -1,7 +1,7 @@
 import React from "react";
 import "./LandingStudent.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./LandingStudent";
+import Landing from "./components/LandingStudent";
 import TechNews from "./components/TechNews";
 
 function App() {
