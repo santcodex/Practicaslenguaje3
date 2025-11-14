@@ -1,7 +1,7 @@
 import React from "react";
 import "./LandingStudent.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./Landing";
+import Landing from "./LandingStudent";
 import TechNews from "./components/TechNews";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
   );
 }
 
-const Landingpage = () => {
+const Landing = () => {
   // Datos
   const profile = {
     nombre: "Johan Santana",
