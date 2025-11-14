@@ -17,7 +17,7 @@ function App() {
 
 export default App;
 
-const Landing = () => {
+const Landingpage = () => {
   // Datos
   const profile = {
     nombre: "Johan Santana",
