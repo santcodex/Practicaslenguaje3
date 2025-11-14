@@ -1,8 +1,10 @@
 import React from "react";
 import "./LandingStudent.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landing from "./src/LandingStudent";
-import TechNews from "./src/TechNews";
+import Landing from "./LandingStudent";
+import TechNews from "./TechNews";
+import { Link } from "react-router-dom";
+
 
 function App() {
   return (
@@ -14,17 +16,6 @@ function App() {
     </Router>
   );
 }
-
-const Landingpage = () => {
-  // Datos
-  const profile = {
-    nombre: "Johan Santana",
-    edad: 22,
-    github: "https://github.com/santcodex",
-    github2: "https://github.com/bufferring",
-    email: "johanrjosue@gmail.com",
-    avatar: "/foto.jpg",
-  };
 
   const habilidades = {
     lenguajes: [
@@ -79,15 +70,10 @@ const Landingpage = () => {
           </div>
         </div>
 
-        <div className="actions" style={{ marginTop: 18 }}>
-        <a
-  className="btn btn-secondary"
-  href="/tech-news"
-  target="_blank"
-  rel="noopener noreferrer"
->
+        <Link className="btn btn-secondary" to="/tech-news">
   Ver noticias de tecnología
-</a>
+</Link>
+
           <a
             className="btn btn-primary"
             href={profile.github}
