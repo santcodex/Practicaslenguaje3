@@ -30,8 +30,8 @@ const Landing = () => {
 
   useEffect(() => {
     const fetchYoutubePlaylist = async () => {
-      const playlistId = "TU_PLAYLIST_ID"; // Reemplaza con tu ID de playlist
-      const apiKey = "TU_API_KEY"; // Reemplaza con tu clave de API
+      const playlistId = "PL1-P8UkWToBbakBtgZgfFccBWVRaPdt2x"; // Reemplaza con tu ID de playlist
+      const apiKey = "AIzaSyCShrtOugVhHN5nIkIGkFuYpxOnoAffElY"; // Reemplaza con tu clave de API
 
       try {
         const res = await fetch(
