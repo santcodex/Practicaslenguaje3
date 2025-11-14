@@ -205,4 +205,5 @@ const Landingpage = () => {
   );
 };
 
-export default Landing;
+export const Landing = () => { ... }; // Exportación nombrada
+
