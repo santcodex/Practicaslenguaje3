@@ -15,7 +15,7 @@ function App() {
   );
 }
 
-const Landing = () => {
+const Landingpage = () => {
   // Datos
   const profile = {
     nombre: "Johan Santana",
