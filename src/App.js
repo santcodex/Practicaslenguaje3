@@ -36,7 +36,7 @@ const Landing = () => {
       const fetchNews = async () => {
         try {
           const res = await fetch(
-            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=TU_API_KEY`
+            `https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=5&apiKey=5cd6a2ccd7294d5fbe924e9ce00fa6ee`
           );
           const data = await res.json();
           setArticles(data.articles || []);
